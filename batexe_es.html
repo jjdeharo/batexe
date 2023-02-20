@@ -49,10 +49,11 @@
     document.body.style.fontFamily = font;
    
     let fontSize = localStorage.getItem('fontSize');
-    if (!fontSize) {
-      originalFontSize = window.getComputedStyle(document.body).getPropertyValue('font-size');
-      localStorage.setItem('originalFontSize', originalFontSize);
+    originalFontSize = window.getComputedStyle(document.body).getPropertyValue('font-size');
+    localStorage.setItem('originalFontSize', originalFontSize);
+    if (!fontSize) {     
       fontSize = originalFontSize
+      localStorage.setItem('fontSize', fontSize);
     }
     document.body.style.fontSize = fontSize;
 
@@ -64,7 +65,7 @@
     standardFontButton.addEventListener('click', () => {
       setFont(originalFont);
       fontSize = originalFontSize
-      localStorage.setItem('fontSize', fontSize + 'px');
+      localStorage.setItem('fontSize', fontSize);
       document.body.style.fontSize = localStorage.getItem('originalFontSize')
     });
     fontButtonContainer.appendChild(standardFontButton);
