@@ -11,3 +11,6 @@ El cambio se conserva aunque se cierre el navegador. El botón **'Fuente estánd
 En el editor de eXeLearning se activa el modo avanzado y el contenido del archivo [batexe_es.html](https://raw.githubusercontent.com/jjdeharo/batexe/main/batexe_es.html) o [batexe_ca.html](https://raw.githubusercontent.com/jjdeharo/batexe/main/batexe_ca.html) se pega en la pestaña 'Propiedades > Paquete > Opciones avanzadas > Personalizar la sección HEAD'
 
 Versión web en https://bilateria.org/fuente y https://bilateria.org/font
+
+## Desplegable
+Versión sin botones, con desplegable: [desplegable_es.html](https://github.com/jjdeharo/batexe/blob/f3e42df9c0402f832db4ab26be5b0d0e089560da/desplegable_es.html)
