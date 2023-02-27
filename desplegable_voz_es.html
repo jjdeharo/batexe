@@ -1,0 +1,164 @@
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
+
+<style>
+  .font-button {
+    padding: 8px 16px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 8px;
+    text-align: center;
+    text-decoration: none;
+    background-color: white;
+  }
+
+  .fontButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* establece el wrap para que los botones se distribuyan en varias líneas */
+    gap: 10px; /* ajusta el espacio entre los botones */
+  }
+  
+  /* Estilo para el desplegable */
+  select {
+    padding: 8px 16px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 8px;
+    text-align: center;
+    text-decoration: none;
+    background-color: white;
+  }
+</style>
+
+<script>
+  let originalFont;
+  let currentFontSize;
+  let originalFontSize;
+  let isReading = false;
+  let utterance = new SpeechSynthesisUtterance();
+
+  function setFont(font) {
+    document.body.style.fontFamily = font;
+    localStorage.setItem('font', font);
+  }
+
+  function setFontSize(size) {
+    currentFontSize = parseInt(window.getComputedStyle(document.body).getPropertyValue('font-size'));
+    currentFontSize += size;
+    document.body.style.fontSize = currentFontSize + 'px';
+    localStorage.setItem('fontSize', currentFontSize + 'px');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    originalFont = window.getComputedStyle(document.body).getPropertyValue('font-family');
+    localStorage.setItem('originalFont', originalFont);
+    let font = localStorage.getItem('font');
+    if (!font) {
+      font = originalFont;
+    }
+    document.body.style.fontFamily = font;
+   
+    let fontSize = localStorage.getItem('fontSize');
+    originalFontSize = window.getComputedStyle(document.body).getPropertyValue('font-size');
+    localStorage.setItem('originalFontSize', originalFontSize);
+    if (!fontSize) {     
+      fontSize = originalFontSize
+      localStorage.setItem('fontSize', fontSize);
+    }
+    document.body.style.fontSize = fontSize;
+
+    const fontButtonContainer = document.createElement('div');
+    fontButtonContainer.classList.add('fontButtonContainer'); // utiliza una clase en lugar de los estilos directamente
+    
+    const selectContainer = document.createElement('div');
+    selectContainer.classList.add('select-container');
+    const select = document.createElement('select');
+    
+   const standardOption = document.createElement('option');
+standardOption.value = 'standard';
+standardOption.text = 'Fuente estándar';
+select.add(standardOption);
+
+const dyslexicOption = document.createElement('option');
+dyslexicOption.value = 'dyslexic';
+dyslexicOption.text = 'OpenDyslexic';
+select.add(dyslexicOption);
+
+const hyperlegibleOption = document.createElement('option');
+hyperlegibleOption.value = 'hyperlegible';
+hyperlegibleOption.text = 'Atkinson Hyperlegible';
+select.add(hyperlegibleOption);
+// Seleccionar la opción correspondiente al cargar la página
+if (font === 'OpenDyslexic') {
+  select.selectedIndex = 1;
+} else if (font === 'Atkinson Hyperlegible') {
+  select.selectedIndex = 2;
+}
+
+select.addEventListener('change', () => {
+  const font = select.value;
+  if (font === 'standard') {
+    setFont(originalFont);
+    fontSize = originalFontSize
+    localStorage.setItem('fontSize', fontSize);
+    document.body.style.fontSize = localStorage.getItem('originalFontSize');
+  } else if (font === 'dyslexic') {
+    setFont('OpenDyslexic');
+  } else if (font === 'hyperlegible') {
+    setFont('Atkinson Hyperlegible');
+  }
+}); 
+
+selectContainer.appendChild(select);
+fontButtonContainer.appendChild(selectContainer);
+
+const increaseFontButton = document.createElement('button');
+increaseFontButton.classList.add('font-button');
+increaseFontButton.textContent = '+';
+increaseFontButton.addEventListener('click', () => setFontSize(3));
+fontButtonContainer.appendChild(increaseFontButton);
+
+const decreaseFontButton = document.createElement('button');
+decreaseFontButton.classList.add('font-button');
+decreaseFontButton.textContent = '-';
+decreaseFontButton.addEventListener('click', () => setFontSize(-3));
+fontButtonContainer.appendChild(decreaseFontButton);
+
+
+
+const infoLink = document.createElement('a');
+infoLink.textContent = '+Info';
+infoLink.href = 'https://bilateria.org/fuente/';
+infoLink.target = '_blank';
+infoLink.style.marginLeft = '8px';
+infoLink.style.fontSize = '12px';
+fontButtonContainer.appendChild(infoLink);
+
+const readButton = document.createElement('button');
+readButton.classList.add('font-button');
+readButton.textContent = 'Leer';
+readButton.addEventListener('click', () => {
+  if (!isReading) {
+    isReading = true;
+    readButton.textContent = 'Detener';
+    utterance.text = document.body.innerText;
+    speechSynthesis.speak(utterance);
+  } else {
+    isReading = false;
+    readButton.textContent = 'Leer';
+    speechSynthesis.cancel();
+  }
+});
+
+fontButtonContainer.insertBefore(readButton, infoLink);
+
+document.body.insertBefore(fontButtonContainer, document.body.firstChild);
+
+});
+</script>
