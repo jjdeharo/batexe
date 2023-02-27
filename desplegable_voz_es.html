@@ -40,15 +40,16 @@
 
   // Define el texto que se ve en pantalla
   // Reemplazar el texto entre comillas
-  const standardText = 'Fuente estándar';
-  const dyslexicText = 'OpenDyslexic';
-  const hyperlegibleText = 'Atkinson Hyperlegible';
-  const increaseFontText = '+';
-  const decreaseFontText = '-';
-  const infoText = '+Info';
-  const readText = 'Leer';
-  const stopText = 'Detener';
-  // Fin de la definición del texto
+  const standardText = 'Fuente estándar'; // Desplegable
+  const dyslexicText = 'OpenDyslexic'; // Desplegable
+  const hyperlegibleText = 'Atkinson Hyperlegible'; // Desplegable
+  const increaseFontText = '+'; // Botón para incrementar la fuente
+  const decreaseFontText = '-'; // Botón para reducir la fuente
+  const infoText = '+Info'; // Texto del enlace +Info
+  const infoTextLink = 'https://bilateria.org/fuente'; // Destino del enlace de +Info
+  const readText = 'Leer'; // Botón para leer en voz alta el contenido de la página
+  const stopText = 'Detener'; // Botón para deterner la lectura
+
 
   let originalFont;
   let currentFontSize;
@@ -147,7 +148,7 @@ fontButtonContainer.appendChild(decreaseFontButton);
 
 const infoLink = document.createElement('a');
 infoLink.textContent = infoText;
-infoLink.href = 'https://bilateria.org/fuente/';
+infoLink.href = infoTextLink;
 infoLink.target = '_blank';
 infoLink.style.marginLeft = '8px';
 infoLink.style.fontSize = '12px';
