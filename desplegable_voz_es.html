@@ -1,8 +1,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Helvetica" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Verdana" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Tahoma" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
+
 
 <style>
   .font-button {
@@ -47,8 +46,6 @@
   const dyslexicText = 'OpenDyslexic'; // Desplegable
   const hyperlegibleText = 'Atkinson Hyperlegible'; // Desplegable
   const helveticaText = 'Helvetica'; // Desplegable
-  const verdanaText = 'Verdana'; // Desplegable
-  const tahomaText = 'Tahoma'; // Desplegable
   const increaseFontText = '+'; // Botón para incrementar la fuente
   const decreaseFontText = '-'; // Botón para reducir la fuente
   const infoText = '+Info'; // Texto del enlace +Info
@@ -120,15 +117,7 @@
   helveticaOption.text = helveticaText;
   select.add(helveticaOption);
 
-  const verdanaOption = document.createElement('option');
-  verdanaOption.value = 'verdana';
-  verdanaOption.text = verdanaText;
-  select.add(verdanaOption);
 
-  const tahomaOption = document.createElement('option');
-  tahomaOption.value = 'tahoma';
-  tahomaOption.text = tahomaText;
-  select.add(tahomaOption);
 
   // Seleccionar la opción correspondiente al cargar la página
   if (font === 'OpenDyslexic') {
@@ -137,10 +126,6 @@
   select.selectedIndex = 2;
   } else if (font === 'Helvetica') {
   select.selectedIndex = 3;
-  } else if (font === 'Verdana') {
-  select.selectedIndex = 4;
-  } else if (font === 'Tahoma') {
-  select.selectedIndex = 5;
   }
 
   select.addEventListener('change', () => {
@@ -156,10 +141,6 @@
   setFont('Atkinson Hyperlegible');
   } else if (font === 'helvetica') {
   setFont('Helvetica');
-  } else if (font === 'verdana') {
-  setFont('Verdana');
-  } else if (font === 'tahoma') {
-  setFont('Tahoma');
   }
   });
 
