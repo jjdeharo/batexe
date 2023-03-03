@@ -47,7 +47,7 @@
   const standardText = 'Fuente estándar'; // Desplegable
   const dyslexicText = 'OpenDyslexic'; // Desplegable
   const hyperlegibleText = 'Atkinson Hyperlegible'; // Desplegable
-  const opensansText = 'OpenSans'; // Desplegable
+  const opensansText = 'Open Sans'; // Desplegable
   const robotoText = 'Roboto'; // Desplegable
   const latoText = 'Lato'; // Desplegable
   const increaseFontText = '+'; // Botón para incrementar la fuente
@@ -117,7 +117,7 @@
   select.add(hyperlegibleOption);
 
   const opensansOption = document.createElement('option');
-  opensansOption.value = 'OpenSans';
+  opensansOption.value = 'Open Sans';
   opensansOption.text = opensansText;
   select.add(opensansOption);
 
@@ -136,7 +136,7 @@
   select.selectedIndex = 1;
   } else if (font === 'Atkinson Hyperlegible') {
   select.selectedIndex = 2;
-  } else if (font === 'OpenSans') {
+  } else if (font === 'Open Sans') {
   select.selectedIndex = 3;
   } else if (font === 'Roboto') {
   select.selectedIndex = 4;
@@ -155,7 +155,7 @@
   setFont('OpenDyslexic');
   } else if (font === 'hyperlegible') {
   setFont('Atkinson Hyperlegible');
-  } else if (font === 'OpenSans') {
+  } else if (font === 'Open Sans') {
   setFont('Open Sans');
   } else if (font === 'Roboto') {
   setFont('Roboto');
