@@ -191,21 +191,25 @@
   readButton.classList.add('font-button');
   readButton.textContent = readText;
   readButton.addEventListener('click', () => {
-  let selectedText = window.getSelection().toString();
-  if (selectedText !== '') {
-  utterance.text = selectedText;
-  } else {
-  utterance.text = document.body.innerText;
-  }
-  if (!isReading) {
-  isReading = true;
-  readButton.textContent = stopText;
-  speechSynthesis.speak(utterance);
-  } else {
-  isReading = false;
-  readButton.textContent = readText;
-  speechSynthesis.cancel();
-  }
+    let selectedText = window.getSelection().toString();
+    if (selectedText !== '') {
+      utterance.text = selectedText;
+    } else {
+      utterance.text = document.body.innerText;
+    }
+    if (!isReading) {
+      isReading = true;
+      readButton.textContent = stopText;
+      speechSynthesis.speak(utterance);
+    } else {
+      isReading = false;
+      readButton.textContent = readText;
+      speechSynthesis.cancel();
+    }
+    utterance.addEventListener('end', () => {
+      isReading = false;
+      readButton.textContent = readText;
+    });
   });
 
   fontButtonContainer.insertBefore(readButton, infoLink);
