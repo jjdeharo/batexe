@@ -3,8 +3,6 @@
 <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"  type="text/css">
-
-
 <style>
   .font-button {
     padding: 8px 16px;
@@ -39,7 +37,6 @@
     background-color: white;
   }
 </style>
-
 <script>
 
   // Define el texto que se ve en pantalla
@@ -50,13 +47,15 @@
   const opensansText = 'Open Sans'; // Desplegable
   const robotoText = 'Roboto'; // Desplegable
   const latoText = 'Lato'; // Desplegable
+  const dyslexicDesc = 'Dislexia:'; // Descripción de la opción OpenDyslexic
+  const hyperlegibleDesc = 'Deficiencias visuales:'; // Descripción de la opción Atkinson Hyperlegible
+  const highLegibilityDesc = 'Alta legibilidad:'; // Descripción de las opciones Roboto, Lato y Open Sans
   const increaseFontText = '+'; // Botón para incrementar la fuente
   const decreaseFontText = '-'; // Botón para reducir la fuente
-  const infoText = '+Info'; // Texto del enlace +Info
+    const infoText = '+Info'; // Texto del enlace +Info
   const infoTextLink = 'https://batexe.bilateria.org'; // Destino del enlace de +Info
   const readText = 'Leer'; // Botón para leer en voz alta el contenido de la página
   const stopText = 'Detener'; // Botón para deterner la lectura
-
 
   let originalFont;
   let currentFontSize;
@@ -84,13 +83,13 @@
   font = originalFont;
   }
   document.body.style.fontFamily = font;
-  
+
   let fontSize = localStorage.getItem('fontSize');
   originalFontSize = window.getComputedStyle(document.body).getPropertyValue('font-size');
   localStorage.setItem('originalFontSize', originalFontSize);
-  if (!fontSize) {     
-    fontSize = originalFontSize
-    localStorage.setItem('fontSize', fontSize);
+  if (!fontSize) {
+  fontSize = originalFontSize
+  localStorage.setItem('fontSize', fontSize);
   }
   document.body.style.fontSize = fontSize;
 
@@ -111,10 +110,20 @@
   dyslexicOption.text = dyslexicText;
   select.add(dyslexicOption);
 
+  const dyslexicOptGroup = document.createElement('optgroup');
+  dyslexicOptGroup.label = dyslexicDesc;
+  dyslexicOptGroup.appendChild(dyslexicOption);
+  select.appendChild(dyslexicOptGroup);
+
   const hyperlegibleOption = document.createElement('option');
   hyperlegibleOption.value = 'hyperlegible';
   hyperlegibleOption.text = hyperlegibleText;
   select.add(hyperlegibleOption);
+
+  const hyperlegibleOptGroup = document.createElement('optgroup');
+  hyperlegibleOptGroup.label = hyperlegibleDesc;
+  hyperlegibleOptGroup.appendChild(hyperlegibleOption);
+  select.appendChild(hyperlegibleOptGroup);
 
   const opensansOption = document.createElement('option');
   opensansOption.value = 'Open Sans';
@@ -130,6 +139,13 @@
   latoOption.value = 'Lato';
   latoOption.text = latoText;
   select.add(latoOption);
+
+  const highLegibilityOptGroup = document.createElement('optgroup');
+  highLegibilityOptGroup.label = highLegibilityDesc;
+  highLegibilityOptGroup.appendChild(robotoOption);
+  highLegibilityOptGroup.appendChild(latoOption);
+  highLegibilityOptGroup.appendChild(opensansOption);
+  select.appendChild(highLegibilityOptGroup);
 
   // Seleccionar la opción correspondiente al cargar la página
   if (font === 'OpenDyslexic') {
