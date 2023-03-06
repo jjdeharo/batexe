@@ -53,10 +53,12 @@
   const highLegibilityDesc = 'Alta legibilidad:'; // Descripción de las opciones Roboto, Lato y Open Sans
   const increaseFontText = '+'; // Botón para incrementar la fuente
   const decreaseFontText = '-'; // Botón para reducir la fuente
-    const infoText = '+Info'; // Texto del enlace +Info
+  const infoText = '+Info'; // Texto del enlace +Info
   const infoTextLink = 'https://batexe.bilateria.org'; // Destino del enlace de +Info
-  const readText = 'Leer'; // Botón para leer en voz alta el contenido de la página
+  let readText = 'Leer'; // Botón para leer en voz alta el contenido de la página
   const stopText = 'Detener'; // Botón para deterner la lectura
+  
+  readText = `${readText} (${document.documentElement.lang})`
 
   let originalFont;
   let currentFontSize;
