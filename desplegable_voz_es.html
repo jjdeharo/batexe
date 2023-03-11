@@ -116,6 +116,9 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+  
+
+  
   originalFont = window.getComputedStyle(document.body).getPropertyValue('font-family');
   localStorage.setItem('originalFont', originalFont);
   let font = localStorage.getItem('font');
@@ -294,17 +297,36 @@
   fontButtonContainer.appendChild(readButton);
   
   const floatingButton = document.createElement('button');
-  floatingButton.classList.add('font-button');
-  floatingButton.textContent = floatingFloat;
-  floatingButton.addEventListener('click', () => {
-    if (fontButtonContainer.style.position === 'fixed') {
-      fontButtonContainer.style.position = 'static';
-      floatingButton.textContent = floatingFloat;
-    } else {
-      fontButtonContainer.style.position = 'fixed';
-      floatingButton.textContent = floatingFix;
-    }
-  });
+floatingButton.classList.add('font-button');
+floatingButton.textContent = floatingFloat;
+floatingButton.addEventListener('click', () => {
+  if (floatingButton.textContent === floatingFix) {
+    fontButtonContainer.style.position = 'static';
+    floatingButton.textContent = floatingFloat;
+    localStorage.setItem('floatState', 'static');
+  } else {
+    fontButtonContainer.style.position = 'fixed';
+    floatingButton.textContent = floatingFix;
+    localStorage.setItem('floatState', 'fixed');
+  }
+});
+
+  
+
+  let floatState = localStorage.getItem('floatState');
+  if (!floatState) {
+    floatState = 'static';
+    floatingButton.textContent = floatingFix;
+  }
+  if (floatState === 'fixed') {
+    fontButtonContainer.style.position = 'fixed';
+    floatingButton.textContent = floatingFix;
+  } else {
+    fontButtonContainer.style.position = 'static';
+    floatingButton.textContent = floatingFloat;
+  }
+  
+  localStorage.setItem('floatState', floatState);
   
 fontButtonContainer.appendChild(floatingButton);
 
