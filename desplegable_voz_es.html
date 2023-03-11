@@ -84,6 +84,9 @@
   const increaseFontText = '+'; // Botón para incrementar la fuente
   const decreaseFontText = '-'; // Botón para reducir la fuente
   
+  let floatingFix = 'Fija'
+  let floatingFloat = 'Flotante'
+  
   const infoText = '+Info'; // Texto del enlace +Info
   const infoTextLink = 'https://batexe.bilateria.org'; // Destino del enlace de +Info
   
@@ -241,19 +244,11 @@
   decreaseFontButton.textContent = decreaseFontText;
   decreaseFontButton.addEventListener('click', () => setFontSize(-3));
   fontButtonContainer.appendChild(decreaseFontButton);
-
-  const infoLink = document.createElement('a');
-  infoLink.textContent = infoText;
-  infoLink.href = infoTextLink;
-  infoLink.target = '_blank';
-  infoLink.style.marginLeft = '8px';
-  infoLink.style.fontSize = '12px';
-  fontButtonContainer.appendChild(infoLink);
-
-const readButton = document.createElement('button');
-readButton.classList.add('font-button');
-readButton.textContent = readText;
-readButton.addEventListener('click', () => {
+  
+  const readButton = document.createElement('button');
+  readButton.classList.add('font-button');
+  readButton.textContent = readText;
+  readButton.addEventListener('click', () => {
   let selectedText = window.getSelection().toString();
   let text = '';
   let lang = document.documentElement.lang;
@@ -294,14 +289,38 @@ readButton.addEventListener('click', () => {
     isReading = false;
     readButton.textContent = readText;
   });
-});
+});  
+  
+  fontButtonContainer.appendChild(readButton);
+  
+  const floatingButton = document.createElement('button');
+  floatingButton.classList.add('font-button');
+  floatingButton.textContent = floatingFloat;
+  floatingButton.addEventListener('click', () => {
+    if (fontButtonContainer.style.position === 'fixed') {
+      fontButtonContainer.style.position = 'static';
+      floatingButton.textContent = floatingFloat;
+    } else {
+      fontButtonContainer.style.position = 'fixed';
+      floatingButton.textContent = floatingFix;
+    }
+  });
+  
+fontButtonContainer.appendChild(floatingButton);
 
+
+  const infoLink = document.createElement('a');
+  infoLink.textContent = infoText;
+  infoLink.href = infoTextLink;
+  infoLink.target = '_blank';
+  infoLink.style.marginLeft = '8px';
+  infoLink.style.fontSize = '12px';
+  fontButtonContainer.appendChild(infoLink);
 
   
   infoLink.classList.add('z-index');
 
-  fontButtonContainer.insertBefore(readButton, infoLink);
-
   document.body.insertBefore(fontButtonContainer, document.body.firstChild);
+   
   });
 </script>
