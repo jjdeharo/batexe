@@ -239,13 +239,13 @@
   const increaseFontButton = document.createElement('button');
   increaseFontButton.classList.add('font-button');
   increaseFontButton.textContent = increaseFontText;
-  increaseFontButton.addEventListener('click', () => setFontSize(3));
+  increaseFontButton.addEventListener('click', () => setFontSize(1));
   fontButtonContainer.appendChild(increaseFontButton);
 
   const decreaseFontButton = document.createElement('button');
   decreaseFontButton.classList.add('font-button');
   decreaseFontButton.textContent = decreaseFontText;
-  decreaseFontButton.addEventListener('click', () => setFontSize(-3));
+  decreaseFontButton.addEventListener('click', () => setFontSize(-1));
   fontButtonContainer.appendChild(decreaseFontButton);
   
   const readButton = document.createElement('button');
