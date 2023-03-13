@@ -1,0 +1,5 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="batexe.css">
+  <script src="batexe.js"></script>
+  <link rel="import" href="batexe.html">
+</head>
