@@ -13,8 +13,8 @@
   const robotoText = 'Roboto'; // Desplegable
   const latoText = 'Lato'; // Desplegable
 
-  const increaseFontText = '+'; // Botón para incrementar la fuente
-  const decreaseFontText = '-'; // Botón para reducir la fuente
+  const increaseFontText = 'A+'; // Botón para incrementar la fuente
+  const decreaseFontText = 'A-'; // Botón para reducir la fuente
   
   let floatingFix = 'Fijar' // Texto del botón flotante cuando está sobre el texto
   let floatingFloat = 'Flotar' //Texto del botón flotante cuando está fijo en la parte superior
