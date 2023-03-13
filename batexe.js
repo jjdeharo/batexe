@@ -1,7 +1,3 @@
-</style>
-
-<script>
-
 // Define los textos que se ven en pantalla. Reemplazar el texto entre comillas
   const defaultText = 'Parámetros por defecto:'; //Descripción de la opción por defecto
   const standardText = 'Fuente estándar'; // Desplegable
@@ -281,4 +277,3 @@ fontButtonContainer.appendChild(floatingButton);
   document.body.insertBefore(fontButtonContainer, document.body.firstChild);
    
   });
-</script>
