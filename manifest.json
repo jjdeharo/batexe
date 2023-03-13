@@ -1,5 +1,25 @@
-<head>
-  <link rel="stylesheet" type="text/css" href="batexe.css">
-  <script src="batexe.js"></script>
-  <link rel="import" href="batexe.html">
-</head>
+{
+  "manifest_version": 2,
+  "name": "Nombre de tu aplicación",
+  "description": "Descripción de tu aplicación",
+  "version": "1.0",
+  "icons": {
+    "128": "icon_128.png"
+  },
+  "app": {
+    "background": {
+      "scripts": ["batexe.js"]
+    }
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "batexe.html"
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-inline'; object-src 'self'",
+  "web_accessible_resources": [
+    "batexe.css"
+  ]
+}
