@@ -3,6 +3,7 @@
 <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"  type="text/css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"  type="text/css">
 
 
 <style>
@@ -80,6 +81,7 @@
   const opensansText = 'Open Sans'; // Desplegable
   const robotoText = 'Roboto'; // Desplegable
   const latoText = 'Lato'; // Desplegable
+  const montserratText = 'Montserrat'; // Desplegable
 
   const increaseFontText = 'A+'; // Botón para incrementar la fuente
   const decreaseFontText = 'A-'; // Botón para reducir la fuente
@@ -189,11 +191,21 @@
   latoOption.text = latoText;
   select.add(latoOption);
 
+  const montserratOption = document.createElement('option');
+  montserratOption.value = 'Montserrat';
+  montserratOption.text = montserratText;
+  select.add(montserratOption);  
+  
+
   const highLegibilityOptGroup = document.createElement('optgroup');
   highLegibilityOptGroup.label = highLegibilityDesc;
-  highLegibilityOptGroup.appendChild(robotoOption);
   highLegibilityOptGroup.appendChild(latoOption);
+  highLegibilityOptGroup.appendChild(montserratOption);
   highLegibilityOptGroup.appendChild(opensansOption);
+  highLegibilityOptGroup.appendChild(robotoOption);
+  
+  
+  
   select.appendChild(highLegibilityOptGroup);
 
   // Seleccionar la opción correspondiente al cargar la página
@@ -204,11 +216,13 @@
   } else if (font === 'Atkinson Hyperlegible') {
   select.selectedIndex = 2;
   } else if (font === 'Roboto') {
-  select.selectedIndex = 3;
+  select.selectedIndex = 6;
   } else if (font === 'Lato') {
-  select.selectedIndex = 4;
+  select.selectedIndex = 3;
   } else if (font === 'Open Sans') {
   select.selectedIndex = 5;
+  } else if (font === 'Montserrat') {
+  select.selectedIndex = 4;
   }
 
   select.addEventListener('change', () => {
@@ -228,6 +242,8 @@
   setFont('Roboto');
   } else if (font === 'Lato') {
   setFont('Lato');
+  }  else if (font === 'Montserrat') {
+  setFont('Montserrat');
   }
   });
 
