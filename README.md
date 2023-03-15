@@ -1,16 +1,9 @@
 # batexe
 
-## Botones de accesibilidad para eXeLearning
+## Botones de accesibilidad para la web
+Barra de accesibilidad a la web
 
-Añade fuente **OpenDyslexic** (para personas con dislexia), **Atkinson Hyperlegible** (para personas con discapacidad visual) y otros dos botones para aumentar o disminuir el **tamaño de la fuente** de la página.
-
-El cambio se conserva aunque se cierre el navegador. El botón **'Fuente estándar'** devuelve la página a sus valores iniciales.
-
-## Cómo hacerlo
-
-En el editor de eXeLearning se activa el modo avanzado y el contenido del archivo [batexe_es.html](https://raw.githubusercontent.com/jjdeharo/batexe/main/batexe_es.html) o [batexe_ca.html](https://raw.githubusercontent.com/jjdeharo/batexe/main/batexe_ca.html) se pega en la pestaña 'Propiedades > Paquete > Opciones avanzadas > Personalizar la sección HEAD'
-
-Versión web en https://bilateria.org/fuente y https://bilateria.org/font
-
-## Desplegable
-Versión sin botones, con desplegable: [desplegable_es.html](https://github.com/jjdeharo/batexe/blob/f3e42df9c0402f832db4ab26be5b0d0e089560da/desplegable_es.html)
+Se añaden fuentes para disléxicos, deficiencias visuales y otras de alta legibilidad.
+Se añade también un botón que permite leer el texto de las páginas.
+Un botó permite que la barra de accesibilidad permanezca siempre visible, con la finalidad de poder seleccionar texto para leer de forma más cómoda.
+Para ver las instrucciones de instalación véase https://batexe.bilateria.org/
