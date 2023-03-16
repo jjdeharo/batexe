@@ -1,7 +1,6 @@
 # batexe
 
 ## Botones de accesibilidad para la web
-Barra de accesibilidad a la web
 
 * Se añaden fuentes para disléxicos, deficiencias visuales y otras de alta legibilidad.
 * Se añade también un botón que permite leer el texto de las páginas.
