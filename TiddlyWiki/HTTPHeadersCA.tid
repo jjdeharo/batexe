@@ -76,8 +76,8 @@ type: text/vnd.tiddlywiki
 // BATEXE v2 Juan José de Haro 
 
 // Define los textos que se ven en pantalla. Reemplazar el texto entre comillas
-  const defaultText = 'Parámetros por defecto:'; //Descripción de la opción por defecto
-  const standardText = 'Fuente estándar'; // Desplegable
+  const defaultText = 'Parmàmetres per defecte:'; //Descripción de la opción por defecto
+  const standardText = 'Font stàndard'; // Desplegable
   
   const dyslexicDesc = 'Dislèxia:'; // Descripción de la opción OpenDyslexic  
   const dyslexicText = 'OpenDyslexic'; // Desplegable
