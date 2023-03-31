@@ -40,7 +40,7 @@
     flex-wrap: wrap; /* establece el wrap para que los botones se distribuyan en varias líneas */
     gap: 5px; /* ajusta el espacio entre los botones */
     position: static; /* fija la barra de botones en la página: static para que aparezca en la parte superior, fixed para que quede flotando */
-    top: 0; /* fija la barra de botones en la parte superior de la página */
+    top: 40px; /* fija la barra de botones en la parte superior de la página */
     left: 0; /* fija la barra de botones en el margen izquierdo */
     right: 0; /* fija la barra de botones en el margen derecho */
     margin: auto; /* centra la barra de botones horizontalmente */
@@ -118,6 +118,43 @@
   document.body.style.fontSize = currentFontSize + 'px';
   localStorage.setItem('fontSize', currentFontSize + 'px');
   }
+  
+  let googleTranslateWidgetVisible = false;
+
+function toggleGoogleTranslateWidget() {
+  if (!googleTranslateWidgetVisible) {
+    const script = document.createElement('script');
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.id = 'google-translate-script';
+    document.head.appendChild(script);
+    
+    const googleTranslateElement = document.createElement('div');
+    googleTranslateElement.id = 'google_translate_element';
+    googleTranslateElement.style.position = 'fixed';
+    googleTranslateElement.style.top = '0';
+    googleTranslateElement.style.right = '0';
+    googleTranslateElement.style.zIndex = '1000';
+    document.body.appendChild(googleTranslateElement);
+
+    window.googleTranslateElementInit = function() {
+      new google.translate.TranslateElement({pageLanguage: 'auto', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT}, 'google_translate_element');
+    };
+
+    googleTranslateWidgetVisible = true;
+  } else {
+    const script = document.getElementById('google-translate-script');
+    script.remove();
+    
+    const googleTranslateElement = document.getElementById('google_translate_element');
+    googleTranslateElement.remove();
+
+    googleTranslateWidgetVisible = false;
+  }
+}
+
+
+
+
 
   document.addEventListener('DOMContentLoaded', () => {
   
@@ -264,6 +301,13 @@
     decreaseFontButton.addEventListener('click', () => setFontSize(-1));
     fontButtonContainer.appendChild(decreaseFontButton);
     
+    const translateButton = document.createElement('button');
+    translateButton.classList.add('font-button');
+    translateButton.textContent = 'Traducir';
+    translateButton.addEventListener('click', toggleGoogleTranslateWidget);
+    fontButtonContainer.appendChild(translateButton);
+
+    
     const readButton = document.createElement('button');
     readButton.classList.add('font-button');
     readButton.textContent = readText;
@@ -362,5 +406,9 @@
     document.body.insertBefore(fontButtonContainer, document.body.firstChild);
    
   });
+  
+  
+
 </script>
+
 
