@@ -100,7 +100,7 @@ type: text/vnd.tiddlywiki
   let floatingFloat = 'Sempre visible' //Texto del botón flotante cuando está fijo en la parte superior
   
   const infoText = '+Info'; // Texto del enlace +Info
-  const infoTextLink = 'https://batexego.bilateria.org'; // Destino del enlace de +Info
+  const infoTextLink = 'https://batexe.bilateria.org'; // Destino del enlace de +Info
   
   let readText = 'Llegir'; // Botón para leer en voz alta el contenido de la página
   const stopText = 'Aturar'; // Botón para detener la lectura
