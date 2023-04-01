@@ -93,12 +93,14 @@ type: text/vnd.tiddlywiki
 
   const increaseFontText = 'A+'; // Botón para incrementar la fuente
   const decreaseFontText = 'A-'; // Botón para reducir la fuente
+
+  const translateText = '🌐' // Texto para el botón de traducción de Google
   
   let floatingFix = 'Fijar' // Texto del botón flotante cuando está sobre el texto
   let floatingFloat = 'Flotar' //Texto del botón flotante cuando está fijo en la parte superior
   
   const infoText = '+Info'; // Texto del enlace +Info
-  const infoTextLink = 'https://batexe.bilateria.org'; // Destino del enlace de +Info
+  const infoTextLink = 'https://batexego.bilateria.org'; // Destino del enlace de +Info
   
   let readText = 'Leer'; // Botón para leer en voz alta el contenido de la página
   const stopText = 'Detener'; // Botón para detener la lectura
@@ -112,6 +114,7 @@ type: text/vnd.tiddlywiki
   let originalFontSize;
   let isReading = false;
   let utterance = new SpeechSynthesisUtterance();
+  let googleTranslateWidgetVisible = localStorage.getItem('googleTranslateWidgetVisible');
 
   function setFont(font) {
   document.body.style.fontFamily = font;
@@ -125,7 +128,7 @@ type: text/vnd.tiddlywiki
   localStorage.setItem('fontSize', currentFontSize + 'px');
   }
   
-  let googleTranslateWidgetVisible = false;
+  
 
 function toggleGoogleTranslateWidget() {
   if (!googleTranslateWidgetVisible) {
@@ -147,6 +150,7 @@ function toggleGoogleTranslateWidget() {
     };
 
     googleTranslateWidgetVisible = true;
+    
   } else {
     const script = document.getElementById('google-translate-script');
     script.remove();
@@ -156,13 +160,21 @@ function toggleGoogleTranslateWidget() {
 
     googleTranslateWidgetVisible = false;
   }
+  localStorage.setItem('googleTranslateWidgetVisible',googleTranslateWidgetVisible);
 }
 
 
 
 
-
   document.addEventListener('DOMContentLoaded', () => {
+
+    googleTranslateWidgetVisible = JSON.parse(localStorage.getItem('googleTranslateWidgetVisible'));
+  if(googleTranslateWidgetVisible) {
+    googleTranslateWidgetVisible = false;
+    toggleGoogleTranslateWidget();
+  }
+
+    
   
     originalFont = window.getComputedStyle(document.body).getPropertyValue('font-family');
     localStorage.setItem('originalFont', originalFont);
@@ -309,7 +321,7 @@ function toggleGoogleTranslateWidget() {
     
     const translateButton = document.createElement('button');
     translateButton.classList.add('font-button');
-    translateButton.textContent = 'Traducir';
+    translateButton.textContent = translateText;
     translateButton.addEventListener('click', toggleGoogleTranslateWidget);
     fontButtonContainer.appendChild(translateButton);
 
@@ -416,5 +428,3 @@ function toggleGoogleTranslateWidget() {
   
 
 </script>
-
-
