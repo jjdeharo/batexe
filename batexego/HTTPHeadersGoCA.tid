@@ -84,7 +84,7 @@ type: text/vnd.tiddlywiki
     const dyslexicDesc = 'Dislèxia:'; // Descripción de la opción OpenDyslexic  
     const dyslexicText = 'OpenDyslexic'; 
     
-    const hyperlegibleDesc = 'Deficiènciess visualss:'; // Descripción de la opción Atkinson Hyperlegible
+    const hyperlegibleDesc = 'Deficiències visuals:'; // Descripción de la opción Atkinson Hyperlegible
     const hyperlegibleText = 'Atkinson Hyperlegible'; 
     
     const highLegibilityDesc = 'Alta llegibilitat:'; // Descripción de las opciones de alta legibilidad
@@ -461,7 +461,6 @@ function toggleGoogleTranslateWidget() {
   
 
 </script>
-
 
 
 
