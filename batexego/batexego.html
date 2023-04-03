@@ -70,37 +70,57 @@
 // BATEXE v3 Juan José de Haro 
 
 // Define los textos que se ven en pantalla. Reemplazar el texto entre comillas
-  const defaultText = 'Parámetros por defecto:'; //Descripción de la opción por defecto
-  const standardText = 'Fuente estándar'; // Desplegable
-  
-  const dyslexicDesc = 'Dislexia:'; // Descripción de la opción OpenDyslexic  
-  const dyslexicText = 'OpenDyslexic'; // Desplegable
-  
-  const hyperlegibleDesc = 'Deficiencias visuales:'; // Descripción de la opción Atkinson Hyperlegible
-  const hyperlegibleText = 'Atkinson Hyperlegible'; // Desplegable
-  
-  const highLegibilityDesc = 'Alta legibilidad:'; // Descripción de las opciones Roboto, Lato y Open Sans
-  const opensansText = 'OpenSans'; // Desplegable
-  const robotoText = 'Roboto'; // Desplegable
-  const latoText = 'Lato'; // Desplegable
-  const montserratText = 'Montserrat'; // Desplegable
 
-  const increaseFontText = 'A+'; // Botón para incrementar la fuente
-  const decreaseFontText = 'A-'; // Botón para reducir la fuente
+  // Textos del menú desplegable
+    const defaultText = 'Parámetros por defecto:'; //Descripción de la opción por defecto
+    const standardText = 'Fuente estándar'; // Fuente original del documento
+    
+    const dyslexicDesc = 'Dislexia:'; // Descripción de la opción OpenDyslexic  
+    const dyslexicText = 'OpenDyslexic'; 
+    
+    const hyperlegibleDesc = 'Deficiencias visuales:'; // Descripción de la opción Atkinson Hyperlegible
+    const hyperlegibleText = 'Atkinson Hyperlegible'; 
+    
+    const highLegibilityDesc = 'Alta legibilidad:'; // Descripción de las opciones de alta legibilidad
+    const opensansText = 'OpenSans'; 
+    const robotoText = 'Roboto'; 
+    const latoText = 'Lato'; 
+    const montserratText = 'Montserrat'; 
 
-  const translateText = '🌐' // Texto para el botón de traducción de Google
+  // Botones aumentar y disminuir fuente
+    const increaseFontText = 'A+'; // Botón para incrementar la fuente
+    const increaseFontTitle = 'Incrementar la fuente'; // Texto emergente al pasar el ratón
+    
+    const decreaseFontText = 'A-'; // Botón para reducir la fuente
+    const decreaseFontTitle = 'Reducir la fuente'; // Texto emergente al pasar el ratón
+
+  // Botón para traducir
+    const translateText = '🌐'; // Texto para el botón de traducción de Google
+    const translateTitle = 'Traduce la página'; // Texto emergente al pasar el ratón
+
+  // Botón para leer / detener la lectura en voz alta
+    let readText = '📢'; // Botón para leer en voz alta el contenido de la página
+    const readTextTitle ='Lee en voz alta la selección o la página entera'; // Texto emergente al pasar el ratón
+    
+    const stopText = ' 🔇'; // Texto del botón para detener la lectura
+    const stopTextTitle = 'Para de leer'; // Texto emergente al pasar el ratón
   
-  let floatingFix = 'Fijar' // Texto del botón flotante cuando está sobre el texto
-  let floatingFloat = 'Flotar' //Texto del botón flotante cuando está fijo en la parte superior
+  // Botones para que los botones estén siempre visibles
+    let floatingFix = '📌'; // Texto del botón flotante cuando está sobre el texto
+    let floatingFixTitle = 'Fija la barra de botones en la parte superior'; // Texto emergente al pasar el ratón
+    
+    let floatingFloat = '🚀'; //Texto del botón flotante cuando está fijo en la parte superior
+    let floatingFloatTitle = 'La barra permanecerá siempre visible';
   
-  const infoText = '+Info'; // Texto del enlace +Info
-  const infoTextLink = 'https://batexe.bilateria.org'; // Destino del enlace de +Info
   
-  let readText = 'Leer'; // Botón para leer en voz alta el contenido de la página
-  const stopText = 'Detener'; // Botón para detener la lectura
- // Fin 
+  // Enlace +Info
+    const infoText = '+Info'; // Texto del enlace +Info
+    const infoTextLink = 'https://batexe.bilateria.org'; // Destino del enlace de +Info
+
+// Fin 
   
-  readText = `${readText} (${document.documentElement.lang})` //Se añade el idioma al botón Leer
+
+  readText = `${readText} (${document.documentElement.lang})`; //Se añade el idioma al botón Leer
   
 
   let originalFont;
@@ -189,7 +209,7 @@ function toggleGoogleTranslateWidget() {
 
     const fontButtonContainer = document.createElement('div');
     fontButtonContainer.classList.add('fontButtonContainer'); 
-
+    
     const selectContainer = document.createElement('div');
     selectContainer.classList.add('select-container');
     const select = document.createElement('select');
@@ -296,7 +316,6 @@ function toggleGoogleTranslateWidget() {
     }
     });
 
-
     selectContainer.appendChild(select);
     fontButtonContainer.appendChild(selectContainer);
     
@@ -304,25 +323,29 @@ function toggleGoogleTranslateWidget() {
     const increaseFontButton = document.createElement('button');
     increaseFontButton.classList.add('font-button');
     increaseFontButton.textContent = increaseFontText;
+    increaseFontButton.setAttribute('title', increaseFontTitle);
     increaseFontButton.addEventListener('click', () => setFontSize(1));
     fontButtonContainer.appendChild(increaseFontButton);
 
     const decreaseFontButton = document.createElement('button');
     decreaseFontButton.classList.add('font-button');
     decreaseFontButton.textContent = decreaseFontText;
+    decreaseFontButton.setAttribute('title', decreaseFontTitle);
     decreaseFontButton.addEventListener('click', () => setFontSize(-1));
     fontButtonContainer.appendChild(decreaseFontButton);
     
     const translateButton = document.createElement('button');
     translateButton.classList.add('font-button');
     translateButton.textContent = translateText;
+    translateButton.setAttribute('title', translateTitle);
     translateButton.addEventListener('click', toggleGoogleTranslateWidget);
     fontButtonContainer.appendChild(translateButton);
 
-    
+  // Botón para leer en voz alta
     const readButton = document.createElement('button');
     readButton.classList.add('font-button');
     readButton.textContent = readText;
+    readButton.setAttribute('title', readTextTitle);
     
     readButton.addEventListener('click', () => {
     let selectedText = window.getSelection().toString();
@@ -354,32 +377,39 @@ function toggleGoogleTranslateWidget() {
     if (!isReading) {
       isReading = true;
       readButton.textContent = `${stopText} (${lang})`;
+      readButton.setAttribute('title', stopTextTitle);
       speechSynthesis.speak(utterance);
     } else {
       isReading = false;
       readButton.textContent = readText;
+      readButton.setAttribute('title', readTextTitle);
       speechSynthesis.cancel();
     }
 
     utterance.addEventListener('end', () => {
       isReading = false;
       readButton.textContent = readText;
+      readButton.setAttribute('title', readTextTitle);
     });
   });  
     
     fontButtonContainer.appendChild(readButton);
     
+  // Botón para que la barra esté siempre visible
     const floatingButton = document.createElement('button');
     floatingButton.classList.add('font-button');
     floatingButton.textContent = floatingFloat;
+    floatingButton.setAttribute('title', floatingFloatTitle);
     floatingButton.addEventListener('click', () => {
     if (floatingButton.textContent === floatingFix) {
       fontButtonContainer.style.position = 'static';
       floatingButton.textContent = floatingFloat;
+      floatingButton.setAttribute('title', floatingFloatTitle);
       localStorage.setItem('floatState', 'static');
     } else {
       fontButtonContainer.style.position = 'fixed';
       floatingButton.textContent = floatingFix;
+      floatingButton.setAttribute('title', floatingFixTitle);
       localStorage.setItem('floatState', 'fixed');
     }
   });
@@ -390,13 +420,16 @@ function toggleGoogleTranslateWidget() {
     if (!floatState) {
       floatState = 'static';
       floatingButton.textContent = floatingFix;
+      floatingButton.setAttribute('title', floatingFixTitle);
     }
     if (floatState === 'fixed') {
       fontButtonContainer.style.position = 'fixed';
       floatingButton.textContent = floatingFix;
+      floatingButton.setAttribute('title', floatingFixTitle);
     } else {
       fontButtonContainer.style.position = 'static';
       floatingButton.textContent = floatingFloat;
+      floatingButton.setAttribute('title', floatingFloatTitle);
     }
     
     localStorage.setItem('floatState', floatState);
