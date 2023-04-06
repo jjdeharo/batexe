@@ -115,7 +115,7 @@
         const reconocimiento = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
         reconocimiento.interimResults = true;
         reconocimiento.maxAlternatives = 1;
-        reconocimiento.continuous = true;
+        reconocimiento.continuous = false;
 
         let reiniciarReconocimiento = true;
         
